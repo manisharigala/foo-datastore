@@ -1,6 +1,6 @@
 package api
 
-type Document struct {
+type foo struct {
 	ID   string `json:"id"`
 	Name string `json:"name"`
 }

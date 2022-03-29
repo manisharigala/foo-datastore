@@ -7,13 +7,13 @@ import (
 type Server struct {
 	*mux.Router
 
-	documents []Document
+	records map[string]foo
 }
 
 func NewServer() *Server {
 	s := &Server{
-		Router:    mux.NewRouter(),
-		documents: []Document{},
+		Router:  mux.NewRouter(),
+		records: map[string]foo{},
 	}
 	s.routes()
 	return s
