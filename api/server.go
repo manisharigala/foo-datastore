@@ -20,6 +20,7 @@ func NewServer() *Server {
 }
 
 func (s *Server) routes() {
+	s.HandleFunc("/", s.homepage()).Methods("GET")
 	s.HandleFunc("/foo", s.createDocument()).Methods("POST")
 	s.HandleFunc("/foo/{id}", s.getDocument()).Methods("GET")
 	s.HandleFunc("/foo/{id}", s.removeDocument()).Methods("DELETE")

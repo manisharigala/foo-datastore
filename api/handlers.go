@@ -8,6 +8,12 @@ import (
 	"github.com/gorilla/mux"
 )
 
+func (s *Server) homepage() http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		w.Write([]byte("Hello, welcome to Foo Datastore"))
+	}
+}
+
 func (s *Server) createDocument() http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		var f foo
