@@ -6,3 +6,6 @@ run:
 
 clean:
 	rm -rf $(CURDIR)/bin
+
+test:
+	go test ./...

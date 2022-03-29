@@ -8,20 +8,23 @@ import (
 	"github.com/gorilla/mux"
 )
 
+// API to check if server is up
 func (s *Server) homepage() http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte("Hello, welcome to Foo Datastore"))
 	}
 }
 
-func (s *Server) createDocument() http.HandlerFunc {
+// Create new foo record and store in memory
+func (s *Server) createFooRecord() http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		var f foo
+		var f Foo
 		if err := json.NewDecoder(r.Body).Decode(&f); err != nil {
 			http.Error(w, err.Error(), http.StatusBadRequest)
 			return
 		}
 
+		// create new uuid for new record
 		f.ID = uuid.New().String()
 		s.records[f.ID] = f
 
@@ -34,10 +37,12 @@ func (s *Server) createDocument() http.HandlerFunc {
 	}
 }
 
-func (s *Server) getDocument() http.HandlerFunc {
+// Fetching foo record from memory
+func (s *Server) getFooRecord() http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		id := mux.Vars(r)["id"]
 
+		// finding record from memory
 		f, found := s.records[id]
 		if !found {
 			w.WriteHeader(http.StatusNotFound)
@@ -52,16 +57,19 @@ func (s *Server) getDocument() http.HandlerFunc {
 	}
 }
 
-func (s *Server) removeDocument() http.HandlerFunc {
+// Removing Foo record from memory
+func (s *Server) removeFooRecord() http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		id := mux.Vars(r)["id"]
 
+		// finding record from memory
 		_, found := s.records[id]
 		if !found {
 			w.WriteHeader(http.StatusNotFound)
 			return
 		}
 
+		// deleting record from memory
 		delete(s.records, id)
 		w.WriteHeader(http.StatusNoContent)
 	}
