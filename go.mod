@@ -1,4 +1,4 @@
-module http-server
+module github.com/manisharigala/Foo-Datastore
 
 go 1.16
 

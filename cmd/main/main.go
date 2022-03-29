@@ -1,8 +1,9 @@
 package main
 
 import (
-	"http-server/api"
 	"net/http"
+
+	"github.com/manisharigala/Foo-Datastore/api"
 )
 
 func main() {
