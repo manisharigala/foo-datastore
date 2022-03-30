@@ -45,7 +45,7 @@ All the APIs are testes with Unit Tests that can be found at `/cmd/main/main.go`
     - Request
         name : String
     - Response
-        status : Number [200 OK, 400 Bad Request]
+        status : Number [200 OK, 400 Bad Request, 500 Internal Server Error]
         { name : String
           uuid : String }
 
@@ -54,7 +54,7 @@ All the APIs are testes with Unit Tests that can be found at `/cmd/main/main.go`
     - Request 
         id : String
     - Response
-        status : Number [200 OK, 404 Not Found]
+        status : Number [200 OK, 404 Not Found, 500 Internal Server Error]
         { name : String
           uuid : String }
 - **DELETE /foo{id}**
