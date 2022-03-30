@@ -45,8 +45,8 @@ All the APIs are testes with Unit Tests that can be found at `/cmd/main/main.go`
     - Request
         name : String
     - Response
-        status : Number [200 OK, 400 Bad Request, 500 Internal Server Error]
-        { name : String
+        - status : Number [200 OK, 400 Bad Request, 500 Internal Server Error]
+        - { name : String
           uuid : String }
 
 - **GET /foo{id}**
@@ -54,8 +54,8 @@ All the APIs are testes with Unit Tests that can be found at `/cmd/main/main.go`
     - Request 
         id : String
     - Response
-        status : Number [200 OK, 404 Not Found, 500 Internal Server Error]
-        { name : String
+        - status : Number [200 OK, 404 Not Found, 500 Internal Server Error]
+        - { name : String
           uuid : String }
 - **DELETE /foo{id}**
     - Delete foo object associated with id from memeory
